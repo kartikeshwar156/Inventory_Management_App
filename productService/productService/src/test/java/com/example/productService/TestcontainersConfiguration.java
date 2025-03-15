@@ -1,5 +1,6 @@
 package com.example.productService;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
