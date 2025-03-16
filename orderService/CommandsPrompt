@@ -1,0 +1,2 @@
+command to find databases list-
+docker-compose exec mysql mysql -u root -p -e "SHOW DATABASES;"

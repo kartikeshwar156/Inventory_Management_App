@@ -1,0 +1,28 @@
+#version: '4'
+services:
+  mysql:
+    image: mysql
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+
+# it is best practice to use container name as host name
+# in ports , the port is the locahhost port from our local machine
+#  and second one is that of container port
+
+# in mysql you cannot use MYSQL_DATABASE to create a data base here, for it you nee to
+# some other .sql file
+
+# - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+# in this line, :/docker-entrypoint command will be executed whenever you
+# will use docker compose up -d command for starting the docker msql instance
+# and init.sql file which you have crated will be executed
+# and after this when you run the "docker compose up -d" command, you can see that database is still
+# not created this is because you volume file is already created, so you
+# need to delete it
