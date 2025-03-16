@@ -38,3 +38,6 @@ mysql> SELECT * FROM flyway_schema_history;
 
 mysql> DELETE FROM flyway_schema_history WHERE success = 0;
 Query OK, 1 row affected (0.17 sec)
+
+
+--> after deleteing rerun the docker container and start the application again

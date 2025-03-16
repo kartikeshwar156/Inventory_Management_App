@@ -14,3 +14,37 @@ V23__soname.sql
 flyway is for versioning or database, just like code base is versioned
 using git
 
+-------------------------------------------
+in inventoryService Repository wew have following case
+
+public class Inventory {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private long Id;
+    private String skuCode;
+    private Integer quantity;
+}
+
+and
+
+insert into t_inventory(quantity, sku_code)
+values (100, 'iphone_15'),
+(100, 'pixel_8'),
+(100, 'galaxy_24'),
+(100, 'oneplus_12'); you can see colmen name is different from what I have difined as model etity but still everything is working fine why?
+ChatGPT said:
+
+Everything is working fine because Spring Data JPA uses property-based mapping by default.
+Why Is It Working?
+
+    Column names in the database (t_inventory.quantity, sku_code) do not exactly match the field names in your Inventory entity (quantity, skuCode).
+    However, Spring Data JPA automatically converts camelCase field names to snake_case column names when generating SQL queries.
+    By default, JPA assumes a field name as the column name unless explicitly specified using @Column(name = "column_name").
+
+How JPA Handles This?
+
+    skuCode (Java) → sku_code (SQL)
+        JPA recognizes camelCase and maps it to snake_case in SQL queries.
+        It works fine even though the names are different.
+    quantity remains quantity, so there's no issue.
+
