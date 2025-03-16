@@ -1,0 +1,45 @@
+-docker log -> 2025-03-16 15:08:12 2025-03-16T09:38:12.947813Z 0 [ERROR] [MY-012894] [InnoDB] Unable to open './#innodb_redo/#ib_redo9' (error: 1504).
+- project terminal log -> SQL State  : HY000
+ Error Code : 1030
+ Message    : Got error 168 - 'Unknown (generic) error from engine' from storage engine
+ Location   : db/migration/V1__init.sql (D:\SpringBootMicroservicesProject\Inventory_Management_App\orderService\target\classes\db\migration\V1__init.sql)
+ Line       : 1
+ Statement  : Run Flyway with -X option to see the actual statement causing the problem
+------------
+solution-
+if you are getting these two errors, try restarting the docker container and run the
+application again.
+
+
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+- project terminal logs -> [ERROR] Failed to execute goal org.flywaydb:flyway-maven-plugin:10.20.1:repair (default-cli) on project orderService: org.flywaydb.core.api.FlywayException: Unable to connect to the database. Configure the url, user and password! -> [Help 1]
+  [ERROR]
+  [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+  [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+  [ERROR]
+  [ERROR] For more information about the errors and possible solutions, please read the following articles:
+  [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+  PS D:\SpringBootMicroservicesProject\Inventory_Management_App\orderService>
+  PS D:\SpringBootMicroservicesProject\Inventory_Management_App\orderService>
+
+--------------
+solution-
+check if you have required dependencies or  not,
+if dependencies are there, then
+Since Flyway detected a failed migration, you need to manually clean up the flyway_schema_history table in your MySQL database.
+
+Run this SQL in MySQL:
+--
+USE order_Service_DB;
+SELECT * FROM flyway_schema_history;
+--
+
+If there are failed migrations, delete them:
+--
+DELETE FROM flyway_schema_history WHERE success = 0;
+--
+
+you can run this in separate sql shell without downloading mysql workbench
+

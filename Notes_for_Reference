@@ -1,0 +1,16 @@
+Flyway is for data migration, alternative to hibernate which we have set
+to 'none' in application.properties of orderService project
+
+whenever Flyway is running it will look in "db_migration"
+folder for database migration scripts
+
+and files inside this folder "db_migration" should follow naming convention->
+V<number>__<name>.sql
+
+for example-
+V1__myname.sql
+V23__soname.sql
+
+flyway is for versioning or database, just like code base is versioned
+using git
+

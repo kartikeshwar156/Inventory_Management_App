@@ -1,0 +1,40 @@
+Microsoft Windows [Version 10.0.26100.3476]
+(c) Microsoft Corporation. All rights reserved.
+
+D:\SpringBootMicroservicesProject\Inventory_Management_App\orderService>docker exec -it ecb22a87d7648e54ebc18cf849b535e6101ea76c227f42b5fa5204ef7eabe21a mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 52
+Server version: 9.2.0 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> USE order_Service_DB;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SHOW TABLES;
++----------------------------+
+| Tables_in_order_service_db |
++----------------------------+
+| flyway_schema_history      |
++----------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM flyway_schema_history;
++----------------+---------+-------------+------+--------------+-----------+--------------+---------------------+----------------+---------+
+| installed_rank | version | description | type | script       | checksum  | installed_by | installed_on        | execution_time | success |
++----------------+---------+-------------+------+--------------+-----------+--------------+---------------------+----------------+---------+
+|              1 | 1       | init        | SQL  | V1__init.sql | -45984313 | root         | 2025-03-16 08:14:15 |            638 |       0 |
++----------------+---------+-------------+------+--------------+-----------+--------------+---------------------+----------------+---------+
+1 row in set (0.00 sec)
+
+mysql> DELETE FROM flyway_schema_history WHERE success = 0;
+Query OK, 1 row affected (0.17 sec)
