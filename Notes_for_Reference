@@ -48,3 +48,7 @@ How JPA Handles This?
         It works fine even though the names are different.
     quantity remains quantity, so there's no issue.
 
+
+Read about functional endpoint programming model in Spring documentation.
+
+
