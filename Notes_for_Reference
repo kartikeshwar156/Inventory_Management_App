@@ -62,4 +62,24 @@ Read about functional endpoint programming model in Spring documentation.
 
 This Dependency is required for setting up SecurityConfig class.
 
+----------------------------------------------------------------------------------------------
+
+Hibernate can work automatically in Spring Boot even if you don't define it in
+application.properties, because Spring Boot auto-configures Hibernate
+as the default JPA provider when you include the Spring Data JPA dependency.
+
+----------------------------------------------------------------------------------------------
+
+   <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+      <version>2.8.6</version>
+   </dependency>
+
+This dependency is helping us in Spring MVC Support, means if we wish to access documentation
+through API, you need this.
+
+----------------------------------------------------------------------------------------------
+
+
 
